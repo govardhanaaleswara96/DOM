@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button id="btn" onclick="my()">CLICK ME</button>
+    <p id="txt"></p>
+    <p id="txt1"></p>
+    <p id="txt2"></p>
+    <div>
+      <a name="html" id="html">HTML Tutorial</a><br />
+      <a name="css">CSS Tutorial</a><br />
+      <a name="xml">XML Tutorial</a><br />
+      <button onclick="myFunction()">Create Element</button>
+    </div>
+    <div>
+      <ul>
+        <li>Html</li>
+        <li>Css</li>
+        <li>Js</li>
+      </ul>
+      <button onclick="fragmentMode()">Create Fragment</button>
+    </div>
+    <script>
+      //1.active element
+      function my() {
+        var x = document.activeElement.tagName;
+        document.getElementById("txt").innerHTML = x;
+      }
+      //2.addEventListener
+      document.addEventListener("click", function() {
+        document.getElementById("txt1").innerHTML = "I am AddEventListener";
+      });
+      //3.adopt node - adopt from the other frames
+      //4.anchors
+      var len = document.anchors.length;
+      document.write(len);
+      //5.baseURI
+      var name = document.baseURI;
+      console.log(name);
+      //6.character set
+      var char = document.characterSet;
+      console.log(char);
+      //7.createAttributes
+      function myFunction() {
+        var anchor = document.getElementById("html");
+        var att = document.createAttribute("href");
+        att.value = "https://www.google.com";
+        anchor.setAttributeNode(att);
+      }
+      var c = document.createComment("My personal comments");
+      document.body.appendChild(c);
+      //8.createfragment
+      function fragmentMode() {
+        var d = document.createDocumentFragment();
+        d.appendChild(document.getElementsByTagName("LI")[0]);
+        d.childNodes[0].childNodes[0].nodeValue = "Node Js";
+        document.getElementsByTagName("UL")[0].appendChild(d);
+      }
+      //9.create element
+      var Button = document.createElement("button");
+      Button.innerHTML = "Create Element";
+      document.body.appendChild(Button);
+      //10.cerateEvent
+      //11.designmode
+      document.designMode = "on";
+      //12.domain,documentURI
+      //  document.fullscreenElement;
+      //document.fullscreenEnabled;
+      //document.normalizeDocument();
+      document.querySelectorAll("#txt2").innerHTML = "I AM QUERY SELECTOR";
+      //   console.log(document.strictErrorChecking);
+    </script>
+  </body>
+</html>

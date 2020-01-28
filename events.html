@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Events</title>
+    <style>
+      #myDiv {
+        width: 400px;
+        height: 100px;
+        margin: 25px;
+        background: orange;
+        position: relative;
+        font-size: 20px;
+        text-align: center;
+        color: white;
+      }
+      @keyframes myMove {
+        from {
+          top: 0px;
+        }
+        to {
+          top: 200px;
+        }
+      }
+      .droptarget {
+        float: left;
+        width: 100px;
+        height: 35px;
+        margin: 15px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+      }
+      #screen {
+        background-color: yellow;
+        padding: 20px;
+        font-size: 30px;
+      }
+      #trans {
+        width: 100px;
+        height: 100px;
+        background: red;
+        -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+        transition: width 2s;
+      }
+
+      #trans:hover {
+        width: 400px;
+      }
+      #wheel {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>abort</p>
+      <video width="400" height="300" controls onabort="myFunction()">
+        <source src="assets/videoplayback.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Animation events</p>
+    <div id="myDiv" onclick="myAnimation()">I AM ANIMATION EVENTS</div>
+    <a href="https://www.google.com/">Google</a>
+    <div>
+      <p>focus & blur event</p>
+      <input type="text" id="ip" onfocus="myFocus()" onblur="myBlur()" />
+    </div>
+    <div>
+      <p>canplay event & canplay through event</p>
+      <video width="400" height="300" controls oncanplay="myCanplay()">
+        <source src="assets/videoplayback.mp4" />
+      </video>
+    </div>
+    <p>context menu event</p>
+    <div>
+      <p
+        style="background:yellow"
+        width="300"
+        oncontextmenu="myContextMenu()"
+        contextmenu="mymenu"
+      >
+        Click Right Mouse
+      </p>
+      <menu type="context" id="mymenu"></menu>
+    </div>
+    <div>
+      <p>Copy And Cut & paste dbclik Event</p>
+      <input type="text" oncopy="myCopy()" value="Copy Event" />
+      <input type="text" oncut="myCut()" value="Cut Event" />
+      <button type="button" ondblclick="dbClick()">DB CLICK</button>
+    </div>
+    <div>
+      <p>Drag Events</p>
+      <div class="droptarget">
+        <p draggable="true" id="dragtarget">Drag Me !</p>
+      </div>
+      <div class="droptarget"></div>
+      <p style="clear: both;"></p>
+      <p id="demoDrag"></p>
+      <p>On error event</p>
+      <img src="image.png" onerror="myError()" />
+    </div>
+    <div>
+      <p>Full Screen Events</p>
+      <button onclick="openFullScreen()">OpenFullScrren</button>
+      <button onclick="cancelFullScreen()">CloseFullScrren</button>
+      <p id="screen">I will display the event that was fired!</p>
+    </div>
+    <div>
+      <p>Keydown & Keyup & keypress events</p>
+      <input type="text" onkeydown="myKeydown()" />
+      <input type="text" onkeyup="myKeyup()" />
+      <input type="text" onkeypress="myKeypress()" />
+    </div>
+    <div>
+      <p>Reset Event</p>
+      <form onreset="myReset()">
+        <input type="text" />
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+    <div>
+      <p>Toggle Event</p>
+      <details ontoggle="myToggle()">
+        <summary>Toogle Event</summary>
+        <p>tooggle event is used for summary elements</p>
+      </details>
+    </div>
+    <div>
+      <p>transition end</p>
+      <div id="trans"></div>
+    </div>
+    <p>Wheel event</p>
+    <div id="wheel">
+      <p>
+        This example uses the addEventListener() method to attach a "wheel"
+        event to a DIV element. Roll the mouse wheel over me - either up or
+        down!
+      </p>
+    </div>
+    <script>
+      //1.abort
+      function myFunction() {
+        console.log("abortEvent");
+      }
+      //2.afterprint
+      window.addEventListener("afterprint", myPrint);
+      function myPrint() {
+        alert("After Print Event");
+      }
+      //3.beforeprint
+      window.addEventListener("beforeprint", myPrint);
+      function myPrint() {
+        alert("Before Print Event");
+      }
+      //4.animation events
+      // 1. animationstart,animationiteration,animationend
+      var x = document.getElementById("myDiv");
+      function myAnimation() {
+        x.style.animation = "myMove 4s 2";
+      }
+      x.addEventListener("animationstart", myStartFunction);
+      x.addEventListener("animationiteration", myRepeatFunction);
+      x.addEventListener("animationend", myEndFunction);
+      function myStartFunction() {
+        this.innerHTML = "I AM ANIMATION START";
+        this.style.background = "green";
+      }
+      function myRepeatFunction() {
+        this.innerHTML = "I AM ANIMATION REPEAT";
+        this.style.background = "red";
+      }
+      function myEndFunction() {
+        this.innerHTML = "I AM ANIMATION END";
+        this.style.background = "blue";
+      }
+      //5.beforeunload
+      window.addEventListener("beforeunload", function(event) {
+        event.returnValue = "Hello World !";
+      });
+      //6.blur,focus
+      function myBlur() {
+        document.getElementById("ip").style.background = "red";
+      }
+      function myFocus() {
+        document.getElementById("ip").style.background = "green";
+      }
+      //7.canplay ,canplaythrough
+      function myCanplay() {
+        alert("It Is CanPlay Event");
+      }
+      //8.change event,click event
+      //9.contextmenu
+      function myContextMenu() {
+        alert("It Is ContextMenu");
+      }
+      //10.oncopy
+      function myCopy() {
+        alert("This Copy Event");
+      }
+      //11.oncut
+      function myCut() {
+        alert("This Cut Event");
+      }
+      //12.dbclick
+      function dbClick() {
+        alert("This Is Double Click Event");
+      }
+      //13.drag,dragstart,dragend,dragenter,dragleave,dragover,drop
+      document.addEventListener("dragstart", function(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+      });
+      document.addEventListener("drag", function(event) {
+        document.getElementById("demoDrag").innerHTML =
+          "the P element is dragged";
+      });
+      document.addEventListener("dragover", function(event) {
+        event.preventDefault();
+      });
+      document.addEventListener("drop", function(event) {
+        event.preventDefault();
+        if (event.target.className == "droptarget") {
+          var data = event.dataTransfer.getData("Text");
+          event.target.appendChild(document.getElementById(data));
+          document.getElementById("demoDrag").innerHTML =
+            "the P element was dropped";
+        }
+      });
+      //14.ondurationchange
+      //15.onended - when media is played over it is give alert
+      //16.onerror
+      function myError() {
+        //  alert("Image File Is not Loaded");
+      }
+      //17.focusin,foucusout
+      //18.fullscreenchange,fullscreenerror
+      var elem = document.documentElement;
+      function openFullScreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        }
+      }
+      function cancelFullScreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+      var output = document.getElementById("screen");
+      document.addEventListener("fullScreenChange", function(event) {
+        output.innerHTML = "Full Screen Was Fired !";
+      });
+      //19.hasChange - event occurs when anchor tag url changed
+      //20.input - event occurs when get user i/p
+      //21.invaild - event occurs when i/p is invaild
+      //22.keydown,keypress,keyup
+      function myKeydown() {
+        alert("KeyDown event triggered");
+      }
+      function myKeyup() {
+        alert("Keyup event triggered");
+      }
+      function myKeypress() {
+        alert("Keypress event triggered");
+      }
+      //23.onload - event occurs when page load
+      //24.onloadstart,onloadedmetadata,onloadeddata -  event occurs when data loaded
+      //25.mouseup,mousedown,mouseover,mouseenter,mouserleave,mouseover,mouseout,mousemove - event occurs when mouse operation
+      //26.offline,online - event occurs when interconnectio ON/OFF
+      //27.open - when server is opened
+      //28.pagehide,pageshow - event occurs navigate away/navigate to page
+      //29.pause,play,playing,progress(download),ratechange(speed),seek,seeked,stalled,suspend - event occurs when media playing and pause
+      //30.popstate - event occurs windows history changed
+      //31.resize - event occurs when document is resized
+      //32.reset
+      function myReset() {
+        alert("form reseted");
+      }
+      //33.scroll - event occurs when scrollbar scrolled
+      //34.search - event occurs when searched time.
+      //35.select - event occurs when select text(input,textarea)
+      //36.show  -
+      //37.storage - event occurs web storage is updated
+      //38.submit - event occurs when submited
+      //39.timeupdate - event occurs when play back time changed
+      //40.ontoggle
+      function myToggle() {
+        alert("Toggle Event");
+      }
+      //41.touchstart,tounchend,touchmove,tounchcancel - event occurs  touch screen
+      //42.transitionend
+      document
+        .getElementById("trans")
+        .addEventListener("transitionend", myTrans);
+      function myTrans() {
+        this.innerHTML = "Transition Event";
+        this.style.backgroundColor = "pink";
+      }
+      //43.unload - event occurs when page is unloaded
+      //44.onvolumechange - event occurs when change media volume
+      //45.onwaiting - event occurs when video not playing because of connection
+      //46.wheel
+      document.getElementById("wheel").addEventListener("wheel", myWheel);
+      function myWheel() {
+        this.style.fontSize = "30px";
+      }
+      //Event Objects
+      //1.keyboard events
+      //2.mouseevents
+      //3.uievents
+      //4.tounch events
+      //5.animation events
+      //6.drag events
+      //7.foucs evets
+      //8.wheel events
+      //9.clipboardevets
+      //10.hashchangeevent
+      //11.storage events
+      //12.transition events
+      //13.page transition events
+      //14.popstate events
+      //15.input events
+      //16.progress events
+    </script>
+  </body>
+</html>
