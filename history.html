@@ -8,12 +8,113 @@
   </head>
   <body>
     <script>
-      //history
+      // 1. history
       //The history object contains the URLs visited by the user (within a browser window).
       //1.length - return thee url length
       //2.back - loades the previous url history
       //3.forward - loades next url in the list
       //4.go - loades specific url
+
+      //2. html collection
+      //1.item() - return the elements specific index in html collection
+      //2.length() - return the the elements of html collection
+      //3. namedItem - return the specific elements of name,id in html collection
+
+      //3.location  - containes details about current url
+      // location properties
+      // 1.hash - set or return the hash (#) part of the url
+      // 2.host - set or return the hostname and port number in url
+      // 3.hostname - set or return the hostname
+      //4.href - set or return the full url
+      //5.origin - return the protocal and host name and port number in url
+      //6.pathname - set or return the pathname in url
+      //7.protocal - set or return the protocal in url
+      //8. port - set or return the port in url,
+      //9.search - set or return the querystring of url
+
+      function myLocation() {
+        console.log(location.hash);
+        console.log(location.host);
+        console.log(location.hostname);
+        console.log(location.href);
+        console.log(location.origin);
+        console.log(location.pathname);
+        console.log(location.protocol);
+        console.log(location.port);
+        console.log(location.search);
+      }
+      myLocation();
+
+      // location object methods
+
+      //1.assign - assign new url to document
+      //2.reload - reload same document,
+      //3.replace - replace the url in document
+
+      //3.navigator - information about the browser
+
+      //1.appCodeName - return the code name of browser
+      //2.appName - return the name of browser
+      //3.appVersion - return the version information browser
+      //4. cookieEnabled - determines the whether cookies are enabled
+      //5. geolocation - return the geolocation position of the user
+      //6.language - return the languages of browser
+      //7.online - determines the browser online
+      //8.platform - return the which platform browser is compiled
+      //9.product - return the engine name of browser
+      //10.useragent - return the user-agent header send by browser
+      //11.javaEnabled() - return the java enabled or not
+
+      function myNavigator() {
+        console.log(navigator.appCodeName);
+        console.log(navigator.appName);
+        console.log(navigator.appVersion);
+        console.log(navigator.cookieEnabled);
+        console.log(navigator.language);
+        console.log(navigator.onLine);
+        console.log(navigator.platform);
+        console.log(navigator.product);
+        console.log(navigator.userAgent);
+        console.log(navigator.javaEnabled());
+      }
+      myNavigator();
+
+      //4. screen object -  return object information visitor screen
+      //1.availHeight -return height of screen
+      //2.availWidth - return width of screen
+      //3.colorDepth - return the depth of the color palette
+      //4.height - return the total height
+      //5.weight - return the total width
+      //6.pixelDepth - return the color resolution
+      function screenFunction() {
+        console.log(screen.availHeight + " " + "px");
+        console.log(screen.availWidth + " " + "px");
+        console.log(screen.width + " " + "px");
+        console.log(screen.height + " " + "px");
+        console.log(screen.colorDepth + " " + "px");
+        console.log(screen.pixelDepth + " " + "px");
+      }
+      screenFunction();
+
+      //5.storage - provides access of web storage api session.
+      // 1.key - return the name of nth key in the storage
+      //2.length - return the number of data items stored in storage object
+      //3.getitem - return the value of specified name
+      //4.setitem - add the key or update the key
+      //5.removeitem - remove key from storage
+      //6.clear -  empty all keyout of storage
+      function myStorage() {
+        console.log(localStorage.key(0));
+        console.log(localStorage.length);
+      }
+      myStorage();
+      //7.windows.localstorage
+      localStorage.setItem("lastname", "Smith");
+      console.log(localStorage.getItem("lastname"));
+
+      //8.windows.sessionstorage
+      sessionStorage.setItem("lastname", "Smith");
+      console.log(sessionStorage.getItem("lastname"));
     </script>
   </body>
 </html>
