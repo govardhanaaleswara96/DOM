@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>STYLE</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div>
+      <p>alignContent</p>
+      <div id="main">
+        <div style="background-color:coral;"></div>
+        <div style="background-color:lightblue;"></div>
+        <div style="background-color:khaki;"></div>
+        <div style="background-color:pink;"></div>
+        <div style="background-color:lightgrey;"></div>
+        <div style="background-color:lightgreen;"></div>
+      </div>
+      <button id="my" onclick="myAlignContent()">Align Content</button>
+    </div>
+    <p>animation</p>
+    <div id="myDIV"></div>
+    <button onclick="myAnimation()">Animation</button>
+    <p>animation Delay</p>
+    <button onclick="myAnimationDelay()">Animation Delay</button>
+    <p>animation Direction</p>
+    <button onclick="myAnimationDirection()">Animation Direction</button>
+    <p>animation Duration</p>
+    <button onclick="myAnimationDuration()">Animation Duration</button>
+    <p>animation Play State</p>
+    <button onclick="myAnimationPlayState()">Animation Play State</button>
+    <button onclick="myAnimationPlayPauseState()">Animation Pause State</button>
+    <div id="img">
+      <button id="background" onclick="myBackground()">Get Background</button>
+    </div>
+    <p>backFaceVisibility</p>
+    <div id="visible"></div>
+    Click Here<input type="checkbox" onclick="myChecked(this)" checked />
+    <p>Border</p>
+    <div id="borderSpace">
+      <button onclick="myBorder()">Border</button>
+    </div>
+    <div id="borderImage"></div>
+    <button onclick="myBorderImage()">Border Image</button>
+    <div>
+      <button id="bottom" onclick="myBottom()">Bottom Properties</button>
+    </div>
+    <div class="container">
+      <div class="box" id="box1">This is BOX1.</div>
+      <div class="box" id="box2">This is BOX2.</div>
+      <div style="clear:both;"></div>
+    </div>
+    <button onclick="myBorderBox()">Border Box</button>
+    <p>Flex</p>
+    <div id="flex">
+      <div style="background-color:coral;">RED</div>
+      <div style="background-color:lightblue;">BLUE</div>
+      <div style="background-color:lightgreen;">
+        Green div with more content.
+      </div>
+    </div>
+    <button onclick="myFlex()">Flex Method</button>
+    <script>
+      //1.alignContent,align items,alignSelf- set or return align b/w inside flex box.
+      function myAlignContent() {
+        document.getElementById("main").style.alignContent = "inherit";
+      }
+      //2.animation - set or return the animation will start
+      function myAnimation() {
+        document.getElementById("myDIV").style.animation = "mynewmove 4s 2";
+      }
+      //3.animationDelay  - set or return when animation start after delay
+      function myAnimationDelay() {
+        document.getElementById("myDIV").style.animationDelay = "5s";
+      }
+      //4.animationDirection - set or return animation direction
+      function myAnimationDirection() {
+        document.getElementById("myDIV").style.animationDirection = "reverse";
+      }
+      //5.animationDuration - set or return animation duration.
+      function myAnimationDuration() {
+        document.getElementById("myDIV").style.animationDuration = "1s";
+      }
+      //6.animationFillMode - set or return values applied by the animation outside time excuteing
+
+      //7. animationIlterationCount - set or return the animation count
+      //8. animationName - set or return the animation name
+      //9. animationTimingFunction - set or return the animation time
+      //10.animationPlayState - set or return the animation state
+      function myAnimationPlayState() {
+        document.getElementById("myDIV").style.animationPlayState = "running";
+      }
+      function myAnimationPlayPauseState() {
+        document.getElementById("myDIV").style.animationPlayState = "paused";
+      }
+      //11.background,backgroundColor,backgroundAttachment,backgroundRepeat,backgroundPosition.
+      function myBackground() {
+        document.getElementById("img").style.background =
+          'lightgray url("https://www.learnfly.com/img/post_img/1016041825_mean-stacks-main.jpg")  no-repeat  scroll  center right';
+      }
+      //12.backgroundClip - set or return painting of the background
+      //13.backgroundOrigin -set or return positioning of the background
+      //14.backgroundSize - set or return the size of background image
+      //15.backFaceVisibility - set or return hide or visible
+      function myChecked(x) {
+        if (x.checked == "true") {
+          document.getElementById("visible").style.backfaceVisibility =
+            "visible";
+        } else {
+          document.getElementById("visible").style.backfaceVisibility =
+            "hidden";
+        }
+      }
+      //16.border,borderBottom
+      //17.borderBottom
+      //18.borderBottomLeftRadius
+      //19.borderBottomRightRadius
+      //20.borderBottomStyle
+      //21.borderBottomWidth
+      //22.borderCollapse
+      //23.borderColor
+      function myBorder() {
+        document.getElementById("borderSpace").style.border = "5px solid red";
+        document.getElementById("borderSpace").style.borderBottomColor = "Blue";
+        document.getElementById("borderSpace").style.borderBottomRightRadius =
+          "20px";
+        document.getElementById("borderSpace").style.borderBottomStyle =
+          "dashed";
+        document.getElementById("borderSpace").style.borderBottomWidth = "15px";
+      }
+      //24.borderImage
+      function myBorderImage() {
+        document.getElementById("borderImage").style.borderImage =
+          "url(https://image.shutterstock.com/z/stock-photo--micro-peacock-feather-hd-image-best-texture-background-colourful-indian-peacock-feather-1127238569.jpg) 30 30 round";
+      }
+      //25.borderImageOutset - border set the beyond the border-box
+      //26.borderImageRepeat - set or return the border image type
+      //27.borderImageSource - set or return the change border image,
+      //28.borderImageWidth - set or return the border width
+      //29. borderImageSlice - set or return slice the image
+      //30.bottom
+      function myBottom() {
+        document.getElementById("bottom").style.bottom = "100px";
+      }
+      //31.borderShadow - set or return the box shadow
+      //32.box sizing -  all the element fit in specified area
+      function myBorderBox() {
+        document.getElementById("box1").style.boxSizing = "border-box";
+        document.getElementById("box2").style.boxSizing = "border-box";
+      }
+      //33.captionSide - set or return caption of the element
+      //34.clear - set or return the position of floating elements
+      //35.color - set or return the color of the elements
+      //36.columnCount - set or return divided into columns
+      //37.columnFill - set or return how to fill columns
+      //38.columnGap - set or return the gap into a columns
+      //39.columnRule -  set or return the line b/w the columns
+      //40.columnRuleColor - set the color for the line
+      //41.columnRuleWidth - set or return width of the line
+      //42.ColumnRuleStyle - set or return the line style
+      //43.columns - short properties for return columns
+      //44.columnsWidth -  set or return width of the columns
+      //45.counterIncrement - increment one or more counter
+      //46.counterReset - create rest one or more counters
+      //47.curser - return the curser type (mouse type)
+      //48.direction - set the direction of the text
+      //49.display - set or return the diplay type(block,none,inline)
+      //50.emptyCells - return the empty cell bordered or not
+      ///filter - set the image filter method
+      //51.flex - set or return the element ,relative to rest.
+      function myFlex() {
+        var x = document.getElementById("flex");
+        var y = x.getElementsByTagName("DIV");
+        var i = 0;
+        for (i = 0; y.length; i++) {
+          y[i].style.flex = "1";
+        }
+      }
+      //52.flexBasic  - set or return length of the flex-item
+      //53.flexDirection - set or return the direction of the flex
+      //54.flexFlow - properties for direction and wrap
+      //55.flexGrow - set or return the length will grow flex item
+      //56.flexShring - set or return the lenth of the item ,relative to resr
+      //57.flexWrap- set or return the item wrap or not
+      //58.cssFloat - set or return the float position
+      //59.font,fontFamily,fontStyle,fontVariant,fontWeight,fontSizeAdjust,fontStretch
+      //60.height - set or return the height of element
+      //61.isolation -Defines whether an element must create a new stacking content
+      //62.justifyContent - set or return alignment b/w the items
+      //63.left,right,top,bottom - set or return the left side based on position
+      //64.letterSpacing - space b/w the letters
+      //65.wordSpacing - space b/w the words
+      //66.lineHeight - set or return the line-height
+      //67.listStyle,listStyleImage,listStylePosition,listStyleType -return list style types
+      //68.margin,marginTop,marginLeft,marginRight,marginBottom - return the margin properties
+      //69.maxHeight,maxWidth,minWidth,minHeight - return the max and min width and height properties
+      //70.navUp,navDown,navLeft,navRight,navIndex  - navigation tabes on the elements
+      //71.objectFit,objectPosition  - return the object replacement position
+      //72.opacity - set or return the opacity of element
+      //73.order - set or return the order of flex item
+      //74.orphans - sets or returns the minimum number of lines for an element that must be visible at the bottom of a page
+      //75.outline,outlineStyle,outlineOffset,outlineColor,outlineWidth - set or return the elements of outline
+      //76.overflow,overflowX,overflowY - overflow elements
+      //77.padding,paddingTop,paddingBottom,paddingLeft,paddingRight - return the padding Options
+      //76.pageBreakAfter ,pageBreakBefore,pageBreakInside  - page break elements for print
+      //77.perspective,perspectiveOrigin - perspective of 3d elements
+      //78.position - set or return the position (static,relative,absolute,fixed,sticky)
+      //79.resize - resize the elements
+      //80.tableLayout,tabsize - return the tab size
+      //81.textAlign,textAlignLast,textDecoration,textDecorationLine,textDecorationColor,textDecorationStyle
+      //82.textIndent,textOverflow,textJustify,textShadow,textTransform,top,transform,transformOrigin,transformStyle - text-properties
+      //83.transform,transformOrigin,transformStyle - transform properties on 3D transform
+      //84.transition,transitionProperty,transitionTimingFunction,transitionDuration,transitionDelay - transition properties
+      //85.unicodebidi - return multiple languages in same document
+      //86.userSelect - select or not text after properties
+      //87.verticalAlign - return vertical alignment of the content
+      //88.visibility - return the visibility or not
+      //89. whiteSpace -return  how to handle tabes,linebreaks,whiteSpace in text
+      //90.width - width of the elements
+      //91.wordBreak,wordWrap,windows - set or return the wrap text
+      //92.z-index  - stackOrder of elements
+    </script>
+  </body>
+</html>
