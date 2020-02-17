@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attributes</title>
+  </head>
+  <body>
+    <div id="att1">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, iusto.
+    </div>
+    <div id="att2">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, iusto.
+    </div>
+    <div id="att3">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, iusto.
+    </div>
+    <div id="att4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, iusto.
+    </div>
+    <button onclick="myFunction()" id="btn1">Click Me</button>
+    <script>
+      //1.attr.isid
+      function myFunction() {
+        var x = document.getElementById("att1");
+        x.innerHTML = x.attributes[0].isId;
+      }
+      //2.attr.name
+      function myFunction() {
+        let btn = document.getElementsByTagName("BUTTON")[0];
+        let x = btn.attributes[0].name;
+        let y = btn.attributes[0].value;
+        let z = btn.attributes[0].specified;
+        document.getElementById("att2").innerHTML = x;
+        document.getElementById("att3").innerHTML = y;
+        document.getElementById("att4").innerHTML = z;
+      }
+    </script>
+  </body>
+</html>
