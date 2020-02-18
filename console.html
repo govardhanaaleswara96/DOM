@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Console</title>
+  </head>
+  <body>
+    <div>
+      <button id="btn" onclick="my()">Clear Console</button>
+      <button id="btn" onclick="myTrace()">Trace Console</button>
+    </div>
+    <script>
+      console.assert(
+        document.getElementById("demo"),
+        "You have no element with ID 'demo'"
+      );
+      console.log("Console Clear Event");
+
+      function my() {
+        console.clear();
+      }
+      console.time();
+      for (i = 0; i < 100; i++) {
+        console.count("Count");
+      }
+      console.timeEnd();
+      console.error("Console Error");
+      console.log("Hello world!");
+      console.group();
+      console.groupCollapsed();
+      console.groupEnd();
+      console.log("Hello again, this time inside a group!");
+      console.info("Hello Info");
+      console.warn("Hello Info");
+      console.table(["Gova", "govardhan", "govardhan ab"]);
+
+      function myTrace() {
+        traceEvent();
+      }
+      function traceEvent() {
+        console.trace();
+      }
+    </script>
+  </body>
+</html>
