@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location</title>
+  </head>
+  <body>
+    <p>Geo Location</p>
+    <div id="location"></div>
+    <button onclick="getLocation()">Geo Location</button>
+    <p>History</p>
+    <button onclick="goBack()">Go Back</button>
+    <button onclick="goForward()">Go Forward</button>
+    <button onclick="go()">Go</button>
+    <!-- <a href="www.google.com">Google</a> -->
+    <p>HTML Collection</p>
+    <div id="len"></div>
+    <div id="len1"></div>
+    <div id="len2"></div>
+    <p>Location</p>
+    <a href="https://www.google.com/" id="loc">Google</a>
+  </body>
+  <script>
+    //1.position
+    var a = document.getElementById("location");
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showLocation);
+      } else {
+        a.innerHTML = "Geo Location Not Support in Your Browser";
+      }
+    }
+    function showLocation(position) {
+      a.innerHTML = `Your Location Latitude and Longitude :  ${position.coords.latitude}
+       ${position.coords.longitude}
+
+       `;
+    }
+    //2.history
+    //1.length
+    var x = history.length;
+    document.getElementById("location").innerHTML = x;
+    //2.back
+    function goBack() {
+      window.history.back();
+    }
+    //3.forward
+    function goForward() {
+      window.history.forward();
+    }
+    //4.go
+    function go() {
+      window.history.go(-1);
+    }
+    //3.html collection
+    htmlCollection();
+    function htmlCollection() {
+      let x = document.getElementsByTagName("p");
+      let y = document.getElementById("len");
+      let z = document.getElementById("len1");
+      let z1 = document.getElementById("len2");
+      let a = document.getElementsByTagName("p").length;
+      let b = document.getElementsByTagName("p").namedItem("MyElement");
+      y.innerHTML = x.item(0).innerHTML;
+      z.innerHTML = a;
+      z1.innerHTML = b;
+    }
+    //4.location
+    //MyLoc();
+    function MyLoc() {
+      let a = document.getElementById("loc");
+      console.log(location.hash);
+      console.log(location.host);
+      console.log(location.hostname);
+      console.log(location.href);
+      console.log(location.pathname);
+      console.log(location.port);
+      console.log(location.protocol);
+      console.log(location.origin);
+      console.log(location.search);
+      //location.assign("https://www.google.com/");
+      location.assign();
+      location.replace();
+    }
+    //5.navigator
+    //myNav();
+    function myNav() {
+      console.log(navigator.appName);
+      console.log(navigator.appVersion);
+      console.log(navigator.appCodeName);
+      console.log(navigator.cookieEnabled);
+      console.log(navigator.geolocation);
+      console.log(navigator.language);
+      console.log(navigator.onLine);
+      console.log(navigator.platform);
+      console.log(navigator.product);
+      console.log(navigator.userAgent);
+    }
+    //6.screen
+    //myScreen();
+    function myScreen() {
+      console.log(`screen availHeight :   ${screen.availHeight}`);
+      console.log(`screen availWidth :   ${screen.availWidth}`);
+      console.log(`screen Height :   ${screen.height}`);
+      console.log(`screen Width :   ${screen.width}`);
+      console.log(`screen colorDepth :   ${screen.colorDepth}`);
+      console.log(`screen pixelDepth :   ${screen.pixelDepth}`);
+    }
+    //7.storage
+    myStore();
+    function myStore() {
+      console.log(localStorage.key(1));
+      console.log(localStorage.length);
+      console.log(localStorage.getItem("lastname"));
+      console.log(localStorage.setItem("lastname", "Govardhan"));
+      // console.log(localStorage.clear());
+      console.log(localStorage.key(0));
+    }
+  </script>
+</html>
