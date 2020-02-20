@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head id="he">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .col {
+        background-color: dodgerblue;
+        color: white;
+      }
+      #contant {
+        background-color: tomato;
+        color: white;
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="active()">
+      <p>Active Element</p>
+      <input id="in" type="text" placeholder="Enter Name" />
+      <button id="btn">Button</button>
+      <div id="cont"></div>
+    </div>
+    <div id="addDiv">
+      <p>addEventListener</p>
+      <h3 id="add"></h3>
+    </div>
+    <div>
+      <p id="adopt" onclick="myComment();">adoptNode</p>
+      <iframe
+        src="http://dataviss.com/monitoriviss"
+        style="height:380px;width:520px;"
+      ></iframe>
+      <button id="btn1" onclick="adopt()">Adopt Node</button>
+    </div>
+    <div>
+      <p id="a">Anchors</p>
+      <a name="a" href="http://dataviss.com/monitoriviss">Dataviss</a>
+      <a name="b" href="http://www.google.com/">Google</a>
+      <button id="btn2" onclick="bodyFn()">Anchor</button>
+    </div>
+    <div>
+      <button id="closeFn">Close Event</button>
+    </div>
+    <div id="create">
+      <p>CreateElement</p>
+      <button id="att" onclick="create()">Create Element</button>
+    </div>
+    <div>
+      <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+      </ul>
+      <button onclick="fragment()">Fragment</button>
+    </div>
+    <div>
+      <embed src="helloworld.swf" />
+      <p>Create Event</p>
+      <div id="contant"></div>
+      <button onclick="eventFn()">Mouse Hover Event</button>
+    </div>
+    <form>
+      <input type="text" />
+      <input type="url" />
+      <button type="submit">Submit</button>
+    </form>
+    <div>
+      <p>Full Screen Enabled</p>
+      <video width="30%" controls id="myvideo">
+        <source src="DARBAR .webm" type="video/mp4" />
+        <source src="rain.ogg" type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
+      <button onclick="fullScreen()">Full Screen Enabled</button>
+    </div>
+    <div>
+      <p id="eleId">Element Id</p>
+      <p class="eleClass">Element Class</p>
+      <p name="eleName">Element Name</p>
+      <p>Element Tag Name</p>
+      <p class="elemQuery">Query Selector All</p>
+      <p class="elemQuery">Query Selector All 1</p>
+      <button onclick="elem()">Element Selector</button>
+    </div>
+    <div>
+      <p id="foc">HasFocus</p>
+      <button onclick="hasFos()">Focus</button>
+    </div>
+    <div>
+      <img src="klematis.jpg" alt="flower" width="150" height="113" />
+    </div>
+    <div id="demo"></div>
+    <button onclick="removeHandler()">Remove Add Event Listener</button>
+
+    <script>
+      //1.activeElement
+      function active() {
+        var x = document.activeElement.tagName;
+        document.getElementById("cont").innerHTML = x;
+      }
+      //2.addEventListener
+      document.getElementById("addDiv").addEventListener("click", () => {
+        document.getElementById("add").innerHTML = "addEventListener";
+      });
+      //3.adoptNode
+      function adopt() {
+        var frame = document.getElementsByTagName("IFRAME")[0];
+        var h = frame.contentWindow.document.getElementsByTagName("H1")[0];
+        var x = document.adoptNode(h);
+        document.getElementById("adopt").innerHTML = x;
+      }
+      //4.anchors
+      document.getElementById("btn2").addEventListener("click", () => {
+        let x = document.anchors.length;
+        document.getElementById("a").innerHTML = ` anchor length : ${x}`;
+      });
+      //5.applets
+      console.log(document.applets);
+      //6.baseURI
+      console.log(document.baseURI);
+      //7.body
+      function bodyFn() {
+        document.body.style.backgroundColor = "teal";
+      }
+      //8.close
+      document.getElementById("closeFn").addEventListener("click", () => {
+        document.open();
+        document.write("<h1>I Am Close And Open Event</h1>");
+        document.close();
+      });
+      //9.cokkies
+      console.log(document.cookie);
+      //10.character set
+      console.log(document.characterSet);
+      //11.createElement
+      function create() {
+        let btn = document.createElement("BUTTON");
+        btn.innerHTML = "Create Event Button";
+        document.getElementById("create").appendChild(btn);
+      }
+      //12.createAttribute
+      document.getElementById("att").addEventListener("click", () => {
+        let x = document.getElementsByTagName("P")[4];
+        let att = document.createAttribute("class");
+        att.value = "col";
+        x.setAttributeNode(att);
+      });
+      //13.createComment
+      function myComment() {
+        let x = document.createComment("I am Dynamic Comment");
+        document.body.appendChild(x);
+      }
+      //14.createDocumentFragment
+      function fragment() {
+        let x = document.createDocumentFragment();
+        x.appendChild(document.getElementsByTagName("LI")[0]);
+        x.childNodes[0].childNodes[0].nodeValue = "Milk";
+        document.getElementsByTagName("UL")[0].appendChild(x);
+      }
+      //15.createEvent
+      document.getElementById("contant").addEventListener("mouseover", () => {
+        document.getElementById("contant").innerHTML += "*";
+      });
+      //16.createEvent
+      function eventFn() {
+        let x = document.createEvent("MouseEvent");
+        x.initMouseEvent(
+          "mouseover",
+          true,
+          true,
+          window,
+          0,
+          0,
+          0,
+          0,
+          0,
+          false,
+          false,
+          false,
+          false,
+          0,
+          null
+        );
+        document.getElementById("contant").dispatchEvent(x);
+      }
+      //17.createTextNode
+      var textnode = () => {
+        let x = document.createTextNode("I Am Text Node");
+        document.body.appendChild(x);
+      };
+      textnode();
+      //18.default view
+      console.log(document.defaultView);
+      //19.designmode
+      document.designMode = "on";
+      //20.doctype
+      console.log(document.doctype);
+      //21.documentElement
+      console.log(document.documentElement.nodeName);
+      //22.documentMode
+      console.log(document.documentMode);
+      console.log(document.documentURI);
+      console.log(document.domain);
+      console.log(document.domConfig);
+      console.log(document.embeds.length);
+      //23.execCommand
+      //24.form element
+      console.log(document.forms.length);
+      document.fullscreenElement;
+      //25.fullScreenEnabled
+      var vid = document.getElementById("myvideo");
+      var fullScreen = () => {
+        if (document.fullscreenEnabled) {
+          vid.requestFullscreen();
+        }
+      };
+      //26.querySelector,querySelectorAll,getElementId,getElementsByClassName,getElementsName
+      function elem() {
+        let x = document.getElementById("eleId");
+        let y = document.getElementsByClassName("eleClass");
+        console.log(y[0]);
+        let z = document.getElementsByName("eleName");
+        let x1 = document.getElementsByTagName("P")[10];
+        x.style.background = "red";
+        y[0].style.backgroundColor = "red";
+        z[0].style.background = "red";
+        x1.style.background = "red";
+        let y1 = document.querySelector("#eleId");
+        let z1 = document.querySelector(".eleClass");
+        let a = document.querySelectorAll(".elemQuery");
+        var b;
+        for (b = 0; b < a.length; b++) {
+          a[b].style.backgroundColor = "red";
+        }
+        y1.style.color = "White";
+        z1.style.color = "white";
+      }
+      //26.hasfocus
+      let hasFos = () => {
+        let foc = document.querySelector("#foc");
+        if (document.hasFocus) {
+          foc.innerHTML = "The element Focused";
+        }
+      };
+      //27.images
+      var headElem = document.querySelector("#he");
+      console.log(headElem.id);
+      console.log(document.images.length);
+      let imp = () => {
+        let imp = document.implementation;
+        console.log(imp.hasFeature("HTML", "1.0"));
+      };
+      imp();
+      //28.importNode
+      //29.inputEncoding,lastModified,links
+      console.log(document.inputEncoding);
+      console.log(document.lastModified);
+      console.log(document.links.length);
+      //30.normalize,normalizeDocument
+      //31.readyState,referrer,title,url
+      console.log(document.readyState);
+      console.log(document.referrer);
+      console.log(document.title);
+      console.log(document.URL);
+      //32.strictErrorChecking
+      //33.write,writeln
+      document.write("I Am document write");
+      document.write("I Am document write");
+      document.writeln("I Am document write ln");
+      document.writeln("I Am document write ln");
+      //34.removeEventListener
+      document.addEventListener("mousemove", myFunction);
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML = Math.random();
+      }
+
+      function removeHandler() {
+        document.removeEventListener("mousemove", myFunction);
+      }
+    </script>
+  </body>
+</html>
