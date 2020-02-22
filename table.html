@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Event</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Material Design Bootstrap -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  ></script>
+  </head>
+  <body>
+      <div class="container mt-5">
+      <table class="table table-bordered text-center">
+          <thead class="bg-primary text-white">
+              <tr>
+                  <th>S.NO</th>
+                  <th>Name</th>
+                  <th>Place</th>
+                  <th>Edit</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tbody>
+                  <tr>
+                      <td class="d1">1</td>
+                      <td class="d2">Govardhan AB</td>
+                      <td class="d3">Chennai</td>
+                      <td>
+                          <button class="btn btn-danger">Edit</button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class="d1">2</td>
+                    <td class="d2">Balaji A</td>
+                    <td class="d3">Bangalore</td>
+                    <td>
+                        <button class="btn btn-danger">Edit</button>
+                    </td>
+                </tr>
+              </tbody>
+          </tbody>
+      </table>
+    </div>
+    <script>
+        // $('.btn-danger').click(function(){
+        //     let row = $(this).closest('tr');
+        //     let text = row.find('.d1').text();
+        //     let text1 = row.find('.d2').text();
+        //     let text2 = row.find('.d3').text();
+        //     alert(`${text} , ${text1} , ${text2}`); 
+        // });
+
+
+     
+        var btns = document.getElementsByClassName('btn-danger');
+        // var btn = document.querySelectorAll('.btn-danger');
+        for (const btn of btns) {
+          btn.addEventListener('click',function(){
+          const tds = [...btn.parentElement.parentElement.children].slice(0, 3).map(el => el.textContent)
+        console.log(tds);
+           });
+
+        }
+    //    btn.forEach(el => el.addEventListener('click', event => {
+    //     console.log(event.target.classList[1]);
+    //     let row = el.closest('tr');
+    //     // console.log(row);
+    //     let text = row.find('.d1').innerHTML;
+    //     alert(text);
+
+    //     }));
+
+    </script>
+    <!-- JQuery -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
+    <!-- Bootstrap core JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"
+    ></script>
+    <!-- MDB core JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"
+    ></script>
+  </body>
+</html>

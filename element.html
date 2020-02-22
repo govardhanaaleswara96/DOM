@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element</title>
+    <style>
+      #anchors:focus,
+      #anchors:active {
+        color: green;
+      }
+      .elem {
+        background-color: dodgerblue;
+        color: white;
+      }
+      .elem1 {
+        background-color: teal;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>Access key</p>
+      <a id="aKey" href="https://www.google.com/">GOOGLE</a>
+    </div>
+    <div>
+      <p>Append Child</p>
+      <ul id="ul">
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+      <button onclick="appendChld()" id="appChild" class="ap">
+        Append Child
+      </button>
+    </div>
+    <div id="child">
+      <p>Focus and Blur</p>
+      <a id="anchors" href="https://www.google.com/">GOOGLE</a>
+      <input type="button" onclick="getFocus()" value="get focus" />
+      <input type="button" onclick="loseFocus()" value="lose focus" />
+    </div>
+    <div>
+      <p id="elem">classList</p>
+      <p id="elem1">classList</p>
+    </div>
+    <div id="heigh">
+      <p>Click</p>
+      <form>
+        <input
+          type="checkbox"
+          id="myCheck"
+          onmouseover="myMouse()"
+          onclick="alert('click event occured')"
+        />
+      </form>
+    </div>
+    <div>
+      <p id="edit">Content Editable</p>
+      <button onclick="edit()">Editable</button>
+    </div>
+    <div>
+      <p id="dir">Direction Text</p>
+      <button onclick="myDir()">Change Direction</button>
+    </div>
+    <div>
+      <p id="first">First Child</p>
+      <button onclick="openFullscreen();">Open Fullscreen</button>
+      <button onclick="closeFullscreen();">Close Fullscreen</button>
+    </div>
+    <ul id="myList">
+      <li>Coffee</li>
+      <li>Tea</li>
+    </ul>
+
+    <script>
+      //1.access key
+      document.querySelector("#aKey").accessKey = "g";
+      //2.addEventListener,removeEventListener
+      //3.appendChild
+      function appendChld() {
+        var node = document.createElement("LI");
+        var textNode = document.createTextNode("JAVASCRIPT");
+        node.appendChild(textNode);
+        document.querySelector("#ul").appendChild(node);
+      }
+      //4.attributes
+      var att = document.getElementById("appChild").attributes.length;
+      console.log(att);
+      //5.blur and focus
+      function getFocus() {
+        document.querySelector("#anchors").focus();
+      }
+      function loseFocus() {
+        document.querySelector("#anchors").blur();
+      }
+      //4.childElementCount
+      var a = document.querySelector("#child").childElementCount;
+      console.log(a);
+      //5.childNodes
+      function childNodeFn() {
+        var c = document.body.childNodes;
+        var txt = "";
+        var i;
+        for (i = 0; i < c.length; i++) {
+          txt = txt + c[i].nodeName;
+        }
+        console.log(txt);
+      }
+      childNodeFn();
+      //6.children
+      console.log(document.body.children);
+      //7.classList
+      document.querySelector("#elem").classList.add("elem");
+      document.querySelector("#elem1").className = "elem1";
+      //8.click
+      function myMouse() {
+        document.getElementById("myCheck").click();
+      }
+      //9.clientHeight
+      function clienHit() {
+        let x = document.querySelector("#heigh");
+        console.log(x.clientHeight);
+        console.log(x.clientWidth);
+        console.log(x.clientLeft);
+        console.log(x.clientTop);
+      }
+      clienHit();
+      //10.cloneNode
+      //11.contentEditable
+      function edit() {
+        document.querySelector("#edit").contentEditable = true;
+      }
+      //12.dir
+      function myDir() {
+        document.querySelector("#dir").dir = "rtl";
+      }
+      //13.openFullscreen
+      var elem = document.documentElement;
+      function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        }
+      }
+      function closeFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+      //14.firstChild
+      function first() {
+        // let x = document.querySelector("#ul").firstChild.innerHTML;
+        // document.querySelector("#first").innerHTML = x;
+        var list = document.getElementById("myList").firstChild.innerHTML;
+        document.getElementById("#first").innerHTML = list;
+      }
+      first();
+    </script>
+  </body>
+</html>
